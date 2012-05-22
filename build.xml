@@ -1,0 +1,86 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="HTML5 Tagsoup" default="build-all">
+
+	<!-- Sets the jar version to the date, YYYYMMDD -->
+	<tstamp>
+		<format property="jar.version" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<property file="build.properties" />
+	<property name="build.package.base.dir" value="${build.dir}/uk/ac/warwick/util" />
+	<path id="external.libs.path" description="All external libraries">
+		<fileset dir="${external.libs.dir}" includes="**/*.jar" excludes="test/**" />
+	</path>
+
+	<target name="build-all" depends="clean,init,compile,package" />
+
+	<target name="clean">
+		<delete failonerror="false">
+			<fileset dir="${dist.dir}">
+				<include name="**/*" />
+				<exclude name="**/CVS/**/*.*" />
+			</fileset>
+		</delete>
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="prepare-parser" depends="init">
+		<xslt in="${src.dir}/uk/ac/warwick/html5/tssl/html.tssl" out="${build.dir}/parser/HTML5Models.i" style="${src.dir}/uk/ac/warwick/html5/tssl/tssl-models.xslt" classpathref="external.libs.path" />
+		<xslt in="${src.dir}/uk/ac/warwick/html5/tssl/html.tssl" out="${build.dir}/parser/HTML5Schema1.i" style="${src.dir}/uk/ac/warwick/html5/tssl/tssl-noentity.xslt" classpathref="external.libs.path" />
+		<xslt in="${src.dir}/uk/ac/warwick/html5/tssl/html.tssl" out="${build.dir}/parser/HTML5Schema2.i" style="${src.dir}/uk/ac/warwick/html5/tssl/tssl-entity.xslt" classpathref="external.libs.path" />
+	</target>
+
+	<!-- patch the parser class files -->
+	<target name="parse-src" depends="prepare-parser" description="Parse source.">
+		<copy todir="${parsed.src.dir}">
+			<fileset dir="${src.dir}" />
+		</copy>
+
+		<antcall target="patch-file">
+			<param name="file-pref" value="HTML5Models" />
+			<param name="output-file" value="HTML5Models" />
+			<param name="token" value="MODEL_DEFINITIONS" />
+		</antcall>
+		<antcall target="patch-file">
+			<param name="file-pref" value="HTML5Schema1" />
+			<param name="output-file" value="HTML5Schema" />
+			<param name="token" value="SCHEMA_CALLS1" />
+		</antcall>
+		<antcall target="patch-file">
+			<param name="file-pref" value="HTML5Schema2" />
+			<param name="output-file" value="HTML5Schema" />
+			<param name="token" value="SCHEMA_CALLS2" />
+		</antcall>
+	</target>
+
+	<!-- patch one parser class file -->
+	<target name="patch-file">
+		<loadfile property="patch" srcFile="${build.dir}/parser/${file-pref}.i" />
+		<replace file="${parsed.src.dir}/uk/ac/warwick/html5/${output-file}.java" token="/** @@${token}@@ **/" value="${patch}" />
+	</target>
+
+	<target name="compile" depends="parse-src">
+		<mkdir dir="${build.dir}/all" />
+
+		<!-- all classes -->
+		<javac fork="true" destdir="${build.dir}/all" srcdir="${parsed.src.dir}" classpathref="external.libs.path" source="1.6" target="1.6" debug="on" />
+
+		<copy todir="${build.dir}/all/">
+			<fileset dir="src" includes="META-INF/*" />
+		</copy>
+	</target>
+
+	<target name="package" depends="compile">
+		<copy file="src/META-INF/MANIFEST.MF" tofile="${build.dir}/MANIFEST.MF" />
+		<replace file="${build.dir}/MANIFEST.MF" token="$VERSION" value="${jar.version}" />
+
+		<jar basedir="${build.dir}/all" destfile="${dist.dir}/${jar.name}.jar" manifest="${build.dir}/MANIFEST.MF" />
+
+		<zip destfile="${dist.dir}/${jar.name}-${jar.version}-src.zip" basedir="${parsed.src.dir}" />
+	</target>
+
+</project>
