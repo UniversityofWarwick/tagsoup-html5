@@ -2169,6 +2169,8 @@
       <contains group='M_BLOCK'/>
       <element name='a' type='mixed'>
         <memberOf group='M_INLINE'/>
+        <memberOf group='M_BLOCKINLINE'/>
+        <memberOf group='M_BLOCK'/>
         <contains group='M_NOLINK'/>
         <attribute name='hreflang' type='NMTOKEN' />
         <attribute name='shape' default='rect'/>
@@ -2186,6 +2188,7 @@
       </element>
       <element name='address' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_P'/>
       </element>
@@ -2223,6 +2226,7 @@
       </element>
       <element name='blockquote' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
       </element>
@@ -2238,6 +2242,7 @@
       </element>
       <element name='center' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
       </element>
@@ -2260,6 +2265,7 @@
         <memberOf group='M_INLINE'/>
         <memberOf group='M_BLOCKINLINE'/>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
       </element>
@@ -2270,11 +2276,13 @@
       </element>
       <element name='dir' type='element'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_LI'/>
         <attribute name='compact' type='BOOLEAN' />
       </element>
       <element name='div' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
@@ -2320,42 +2328,49 @@
       <!-- Lots of div-like elements -->
       <element name='article' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='aside' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='header' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='footer' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='nav' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='section' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='details' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_SUMMARY'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
@@ -2370,23 +2385,27 @@
       </element>
       <element name='progress' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='ruby' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
         <attribute name='align' type='NMTOKEN' />
         <element name='rt' type='mixed'>
           <memberOf group='M_BLOCK'/>
+          <memberOf group='M_NOLINK'/>
           <contains group='M_INLINE'/>
           <contains group='M_BLOCK'/>
           <attribute name='align' type='NMTOKEN' />
         </element>
         <element name='rp' type='mixed'>
           <memberOf group='M_BLOCK'/>
+          <memberOf group='M_NOLINK'/>
           <contains group='M_INLINE'/>
           <contains group='M_BLOCK'/>
           <attribute name='align' type='NMTOKEN' />
@@ -2396,6 +2415,7 @@
       <!-- Figure and figcaption -->
       <element name='figure' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_FIGCAPTION'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
@@ -2409,6 +2429,7 @@
       <!-- hgroup -->
       <element name='hgroup' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_HEADER'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
@@ -2417,6 +2438,7 @@
 
       <element name='dl' type='element'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_DEF'/>
         <attribute name='compact' type='BOOLEAN' />
         <element name='dd' type='mixed'>
@@ -2455,7 +2477,6 @@
         <attribute name='novalidate' type='BOOLEAN' />
         <element name='button' type='mixed'>
           <memberOf group='M_INLINE'/>
-          <memberOf group='M_NOLINK'/>
           <contains group='M_INLINE'/>
           <contains group='M_BLOCK'/>
           <attribute name='disabled' type='BOOLEAN' />
@@ -2464,6 +2485,7 @@
         </element>
         <element name='fieldset' type='mixed'>
           <memberOf group='M_BLOCK'/>
+          <memberOf group='M_NOLINK'/>
           <contains group='M_LEGEND'/>
           <contains group='M_INLINE'/>
           <contains group='M_BLOCK'/>
@@ -2563,42 +2585,49 @@
       </element>
       <element name='h1' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_HEADER'/>
         <contains group='M_INLINE'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='h2' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_HEADER'/>
         <contains group='M_INLINE'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='h3' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_HEADER'/>
         <contains group='M_INLINE'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='h4' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_HEADER'/>
         <contains group='M_INLINE'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='h5' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_HEADER'/>
         <contains group='M_INLINE'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='h6' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_HEADER'/>
         <contains group='M_INLINE'/>
         <attribute name='align' type='NMTOKEN' />
       </element>
       <element name='hr' type='empty'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <attribute name='align' type='NMTOKEN' />
         <attribute name='noshade' type='BOOLEAN' />
       </element>
@@ -2625,6 +2654,7 @@
       <element name='ins' closeMode='restartable' type='mixed'>
         <memberOf group='M_INLINE'/>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
       </element>
@@ -2646,6 +2676,7 @@
       </element>
       <element name='menu' type='element'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_LI'/>
         <attribute name='compact' type='BOOLEAN' />
 
@@ -2679,6 +2710,7 @@
       </element>
       <element name='noscript' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <contains group='M_BLOCK'/>
       </element>
@@ -2699,12 +2731,14 @@
       </element>
       <element name='ol' type='element'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_LI'/>
         <attribute name='compact' type='BOOLEAN' />
         <attribute name='start' type='NMTOKEN' />
       </element>
       <element name='p' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_P'/>
         <contains group='M_INLINE'/>
         <contains group='M_TABLE'/>
@@ -2712,15 +2746,18 @@
       </element>
       <element name='pre' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <attribute name='width' type='NMTOKEN' />
       </element>
       <element name='listing' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
       </element>
       <element name='xmp' type='mixed'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_INLINE'/>
         <attribute name='width' type='NMTOKEN' />
       </element>
@@ -2814,6 +2851,7 @@
       </element>
       <element name='table' closeMode='unclosable' type='element'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <memberOf group='M_TABLE'/>
         <contains group='M_FORM'/>
         <contains group='M_TABULAR'/>
@@ -2906,6 +2944,7 @@
       </element>
       <element name='ul' type='element'>
         <memberOf group='M_BLOCK'/>
+        <memberOf group='M_NOLINK'/>
         <contains group='M_LI'/>
         <attribute name='compact' type='BOOLEAN' />
         <attribute name='type' type='NMTOKEN' />
