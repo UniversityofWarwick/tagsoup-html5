@@ -67,7 +67,7 @@
 		<mkdir dir="${build.dir}/all" />
 
 		<!-- all classes -->
-		<javac fork="true" destdir="${build.dir}/all" srcdir="${parsed.src.dir}" classpathref="external.libs.path" source="1.6" target="1.6" debug="on" />
+		<javac fork="false" destdir="${build.dir}/all" srcdir="${parsed.src.dir}" classpathref="external.libs.path" source="1.6" target="1.6" debug="on" />
 
 		<copy todir="${build.dir}/all/">
 			<fileset dir="src" includes="META-INF/*" />

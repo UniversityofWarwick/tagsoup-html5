@@ -2422,6 +2422,7 @@
         <element name='figcaption' type='mixed'>
           <memberOf group='M_FIGCAPTION'/>
           <contains group='M_INLINE'/>
+          <contains group='M_BLOCK'/>
           <attribute name='align' type='NMTOKEN' />
         </element>
       </element>
